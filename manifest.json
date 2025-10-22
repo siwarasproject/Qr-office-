@@ -1,8 +1,8 @@
 {
-  "name": "Qr-Ofv1.0",
-  "short_name": "Qr-Of-v1.0",
+  "name": "Qr-Ofv1.1",
+  "short_name": "Qr-Of-v1.1",
   "description": "Aplikasi QR Code Scanner dan Generator untuk PT Jaya Konstruksi",
-  "start_url": "/",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#001a33",
   "theme_color": "#004aad",
