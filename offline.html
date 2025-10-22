@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anda Sedang Offline</title>
+<style>
+body {
+  margin:0;
+  padding:0;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #111, #000);
+  color:#ffd700;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  text-align:center;
+}
+.card {
+  padding:25px;
+  background:rgba(255,255,255,0.05);
+  border-radius:15px;
+  box-shadow:0 0 15px rgba(255,215,0,0.3);
+}
+h1 {font-size:1.8rem;margin-bottom:10px;}
+p {font-size:0.95rem;color:#ccc;margin-bottom:15px;}
+button {
+  background:linear-gradient(90deg,#ffd700,#ffb700);
+  border:none;
+  border-radius:10px;
+  padding:10px 20px;
+  font-weight:bold;
+  cursor:pointer;
+}
+button:hover {box-shadow:0 0 10px rgba(255,215,0,0.6);}
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>📴 Kamu Sedang Offline</h1>
+    <p>Tenang, aplikasi tetap aman. Coba aktifkan koneksi jika ingin update terbaru.</p>
+    <button onclick="location.reload()">🔄 Coba Lagi</button>
+  </div>
+</body>
+</html>

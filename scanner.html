@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PT Sukses Jaya</title>
+<style>
+/* ======== DASAR HALAMAN ======== */
+body {
+  background: #1a1a2e;
+  color: #f0f0f0;
+  font-family: 'Courier New', sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden; /* supaya cuma tengah yang bisa di-scroll */
+}
+
+/* ======== HEADER FIXED ======== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(135deg, #004aad, #001f3f);
+  color: #fff;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  z-index: 10;
+  border-radius: 17px;
+}
+
+/* ======== MAIN CONTENT SCROLLABLE ======== */
+main {
+  flex: 1;
+  margin-top: 70px;  /* biar gak ketutup header */
+  margin-bottom: 90px; /* biar gak ketutup footer */
+  padding: 15px;
+  overflow-y: auto;
+  text-align: center;
+}
+
+/* ======== FOOTER FIXED ======== */
+footer {
+  border-radius: 19px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(3px);
+  text-align: center;
+  padding: 6px 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  z-index: 999;
+}
+
+footer p {
+  margin: 2px 0;
+  font-size: 0.75rem;
+  color: #aaa;
+  font-weight: normal;
+}
+
+footer p b {
+  font-weight: 600;
+  color: #fff;
+}
+
+footer span {
+  cursor: pointer;
+  position: relative;
+  color: #00d5d5;
+  transition: color 0.3s ease;
+  background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+footer span:hover {
+  color: #0fffff;
+  animation-play-state: paused;
+  text-shadow: 0 0 10px rgba(255,255,255,0.7);
+}
+
+/* ======== ANIMASI & TOMBOL ======== */
+h1 {
+  font-size: 8px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 2px;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* --- Definisi Animasi Glowing untuk h1 (dipertahankan satu saja) --- */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0dcaf0, 0 0 40px #0dcaf0;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #0d4f6e, 0 0 40px #0dcaf0, 0 0 50px #0dcaf0, 0 0 60px #0dcaf0;
+  }
+}
+
+h2 {
+  margin-top: 2px;
+  font-size: 0.1rem;
+  font-weight: 600;
+  color: #0dcaf0;
+  margin-bottom: 0px;
+  animation: fadeInUp 1s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.version {
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  animation: fadeInUp 1s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+.special-text {
+  color: #ffc107;
+  font-weight: 600;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* --- Definisi Animasi Tambahan --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* --- Responsif untuk Perangkat Mobile --- */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.2rem;
+  }
+  h2 {
+    font-size: 1.0rem;
+  }
+}
+
+button {
+  padding: 20px 8px;
+  margin: 12px;
+  border: none;
+  border-radius: 15px;
+  color: #000;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(25,105,0,.5);
+  background: linear-gradient(-95deg, #ffed00, #ffd700, #ffd700, #ff9);
+  background-size: 900% 400%;
+  animation: bodyBG 5s ease infinite;
+  font-weight: 900;
+  border: 3px solid #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+@keyframes bodyBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+button:hover {
+  color: #f00;
+  box-shadow: 0 0 20px rgba(38,9,121,.9);
+}
+
+#scan-result {
+  margin-top: 9px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.result-card {
+  background: #1e1e1e;
+  padding: 1px 5px;
+  border-radius: 19px;
+  box-shadow: 0 0 8px rgba(255,255,255,.1);
+  width: 260px;
+  text-align: center;
+}
+
+/* ======== TOMBOL HOME TENGAH BAWAH ======== */
+.home-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(135deg, #004aad, #ffd700);
+  border-radius: 25px;
+  border: 2px solid #fff;
+  box-shadow: 0 0 8px rgba(255,255,255,0.4);
+  transition: all 0.3s ease;
+}
+
+.home-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255,215,0,0.6);
+}
+
+/* ======== TOAST NOTIFIKASI ======== */
+#toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: #222;
+  padding: 15px 25px;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  display: none;
+  z-index: 9999;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+</style>
+</head>
+
+<body>
+
+<header><h1>PT.JAYA KONSTRUKSI</h1></header>
+<main>
+  <div class="content">
+    <h2>Slipi Jaya Jakarta Barat</h2>
+    <p class="version">Scanner QR Versi Offline ~ Online</p>
+    <span class="special-text"><p>Selamat Berkerja & Utamakan Keselamatan</p></span>
+
+    <video id="preview" width="300" height="400" style="border-radius:10px;background:#000"></video><br>
+
+    <button id="startBackBtn">Scan Kamera Belakang</button>
+    <button id="startFrontBtn">Scan Kamera Depan</button>
+    <button id="downloadBtn">Download Excel</button>
+    <button id="copyBtn">Copy ke Data</button>
+    <button id="clearBtn">Hapus Data</button>
+
+    <div id="scan-result"></div>
+    <div id="toast"></div>
+
+    <a href="index.html" class="home-btn" title="Kembali ke Home">🏠</a>
+  </div>
+</main>
+
+<footer>
+  <p>
+    <span onclick="window.open('https://siwarasproject.blogspot.com','_blank')">
+      © 2025 Siwaras Project
+    </span>
+  </p>
+  <p><b>🇮🇩 Indonesia 🇮🇩</b></p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>
+<script>
+let scanning=false, video=document.getElementById('preview'), stream;
+let dataSet=JSON.parse(localStorage.getItem('absenQR')||'[]');
+const resDiv=document.getElementById('scan-result');
+const toast=document.getElementById('toast');
+
+function showData(){
+  resDiv.innerHTML='';
+  dataSet.forEach(d=>{
+    const c=document.createElement('div');
+    c.className='result-card';
+    c.innerHTML=`<b>${d.nama}</b><br>Divisi: ${d.divisi}<br>Status: ${d.status}<br>Tanggal: ${d.tanggal}<br>Jam: ${d.jam}`;
+    resDiv.appendChild(c);
+  });
+}
+showData();
+
+function beep(){
+  const a=new AudioContext();
+  const o=a.createOscillator();
+  o.connect(a.destination);
+  o.start();
+  o.stop(a.currentTime+0.15);
+}
+
+function showToast(msg){
+  toast.textContent=msg;
+  toast.style.display='block';
+  setTimeout(()=>toast.style.display='none',2000);
+}
+
+async function startCameraCustom(facing){
+  try{
+    const constraints={video:{facingMode:{exact:facing}}};
+    try{stream=await navigator.mediaDevices.getUserMedia(constraints);}
+    catch(e){stream=await navigator.mediaDevices.getUserMedia({video:true});}
+    video.srcObject=stream;
+    await video.play();
+    scanning=true;scanLoop();
+  }catch(err){alert('Gagal buka kamera: '+err);}
+}
+
+function stopCamera(){
+  if(stream){stream.getTracks().forEach(t=>t.stop());scanning=false;}
+}
+
+function scanLoop(){
+  if(!scanning)return;
+  const c=document.createElement('canvas');
+  c.width=video.videoWidth;
+  c.height=video.videoHeight;
+  c.getContext('2d').drawImage(video,0,0,c.width,c.height);
+  const img=c.getContext('2d').getImageData(0,0,c.width,c.height);
+  const code=jsQR(img.data,c.width,c.height);
+  if(code){
+    const now=new Date();
+    const tanggal = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const jam = `${hours}:${minutes}:${seconds}`;
+    const val=code.data.split(',');
+    const nama=val[0].trim(), divisi=val[1]?val[1].trim():'';
+    const ada=dataSet.find(x=>x.nama===nama && x.tanggal===tanggal);
+    if(!ada){
+      dataSet.push({nama,divisi,tanggal,jam,status:'Hadir'});
+      localStorage.setItem('absenQR',JSON.stringify(dataSet));
+      showData();beep();
+      showToast(`${nama} berhasil absen`);
+    }else{
+      showToast(`${nama} sudah absen hari ini`);
+    }
+  }
+  requestAnimationFrame(scanLoop);
+}
+
+document.getElementById('startBackBtn').onclick=()=>startCameraCustom('environment');
+document.getElementById('startFrontBtn').onclick=()=>startCameraCustom('user');
+document.getElementById('clearBtn').onclick=()=>{if(confirm('Hapus semua data hari ini?')){dataSet=[];localStorage.removeItem('absenQR');showData();}};
+
+document.getElementById('copyBtn').onclick=()=>{
+  const t=dataSet.map(d=>[d.nama,d.divisi,d.status,d.tanggal,d.jam]).map(r=>r.join('\t')).join('\n');
+  navigator.clipboard.writeText(t);
+  showToast('Data tersalin, siap paste di Excel / Google Sheet');
+};
+
+document.getElementById('downloadBtn').onclick=()=>{
+  const headers = ["Nama", "Divisi", "Status", "Tanggal", "Jam"];
+  const dataRows = dataSet.map(d => [d.nama, d.divisi, d.status, d.tanggal, d.jam]);
+  const wsData = [headers, ...dataRows];
+  const ws = XLSX.utils.aoa_to_sheet(wsData);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Absensi');
+  XLSX.writeFile(wb, 'Absensi_QR_Karyawan.xlsx');
+};
+</script>
+
+</body>
+</html>
