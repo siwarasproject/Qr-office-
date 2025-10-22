@@ -1,4 +1,4 @@
-const CACHE_NAME = 'qr-of-v2.0.0';
+const CACHE_NAME = 'qr-of-v1.0';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -12,11 +12,11 @@ const urlsToCache = [
   '/qrious.min.js',
   '/xlsx.full.min.js',
   // Semua aset (gambar, icon, dll)
-  '/assets/w1.png',
-  '/assets/w2.png',
-  '/assets/icon-maskable-512.png!',
-'/assets/icon-192.png',
-'/assets/icon-512.png'
+  '/w1.png',
+  '/w2.png',
+  '/icon-maskable-512.png!',
+'/icon-192.png',
+'/icon-512.png'
 // Cache background image
   // Tambahkan file lain seperti CSS, JS, dan halaman lainnya
   // '/scanner.html',
